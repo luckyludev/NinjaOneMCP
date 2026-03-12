@@ -9,11 +9,12 @@ This is the starter runbook for ChatGPT/Claude/Copilot MCP connector onboarding.
 - `/.well-known/oauth-protected-resource`
 - `/.well-known/oauth-authorization-server`
 
-## Next implementation step
-This scaffold currently provides discovery + health endpoints only.
-Next, we will add:
+## Current implementation status
+Implemented now:
 - `/oauth/register`
 - `/oauth/authorize`
 - `/oauth/callback`
 - `/oauth/token`
-- protected `/mcp` forwarding to NinjaOne tools.
+- protected `/mcp` endpoint (auth enforced)
+
+Note: `/mcp` is currently a protected placeholder returning a structured MCP error until NinjaOne tool transport wiring is completed in the next step.
