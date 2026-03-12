@@ -1,0 +1,26 @@
+services:
+  mcp-gateway:
+    build:
+      context: ../..
+      dockerfile: deploy/http-gateway/Dockerfile
+    container_name: ninjaone-mcp-gateway
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8010:8010"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8010/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: ninjaone-mcp-cloudflared
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - mcp-gateway
+    restart: unless-stopped
