@@ -1,5 +1,8 @@
 # NinjaONE MCP Server
 
+> Forked from and credits to **Lungshot/NinjaOneMCP**: https://github.com/Lungshot/NinjaOneMCP  
+> Original author: **Lungshot** (MIT License).
+
 A modern TypeScript MCP (Model Context Protocol) server for NinjaONE RMM platform with comprehensive API coverage and multiple transport options.
 
 ## Features
